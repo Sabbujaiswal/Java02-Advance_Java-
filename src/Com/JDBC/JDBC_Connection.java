@@ -42,10 +42,10 @@ ResultSet
         }
 
         //Insert value operation
-        int empId=11;
-        String EmpName="Shivam";
-        int age=33;
-        double Sal=340000;
+        int empId=15;
+        String EmpName="Shiva";
+        int age=39;
+        double Sal=310000;
      // PreparedStatement ps= conn.prepareStatement("Insert into employee values(1,'Ram',20,20000)");
         //Or
        // PreparedStatement ps= conn.prepareStatement("Insert into employee values('"+empId+"','"+EmpName+"','"+age+"','"+Sal+"')");
@@ -88,5 +88,17 @@ ResultSet
        }else{
            System.out.println("Failed to Delete....");
        }
+
+       //Fetch data from table---
+
+        PreparedStatement ps3= conn.prepareStatement("Select * from employee");
+         ResultSet res1= ps3.executeQuery();
+
+         //next()-- this is method of resultSet that will checks column availbility---
+          while (res1.next()){
+              System.out.println("Names are---"+res1.getString("name"));
+              System.out.println("Salaries are---"+res1.getDouble("salary"));
+          }
+      conn.close();
       }
     }
